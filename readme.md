@@ -1,4 +1,4 @@
-# Beat Saber - Saber Tailor
+# Beat Saber - Saber Tailor v1.0.0
 
 Tweak almost everything about your sabers, including length, grip, and trail length!
 
