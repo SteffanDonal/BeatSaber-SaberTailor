@@ -37,7 +37,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Plugin.cs" />
+    <Compile Include="Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectionUtil.cs" />
+    <Compile Include="Tweaks\ITweak.cs" />
+    <Compile Include="Tweaks\SaberGrip.cs" />
+    <Compile Include="Tweaks\SaberLength.cs" />
+    <Compile Include="Tweaks\SaberTrail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
@@ -304,5 +310,6 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
