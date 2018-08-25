@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A2D66447-9928-4292-9A82-87ABBAA401FF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>SaberTweaks</RootNamespace>
-    <AssemblyName>SaberTweaks</AssemblyName>
+    <RootNamespace>SaberTailor</RootNamespace>
+    <AssemblyName>SaberTailor</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -310,6 +310,5 @@
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

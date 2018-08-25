@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Xft;
 
-namespace SaberTweaks.Tweaks
+namespace SaberTailor.Tweaks
 {
     public class SaberTrail : ITweak
     {

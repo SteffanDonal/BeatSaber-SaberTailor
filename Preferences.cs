@@ -3,7 +3,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 
-namespace SaberTweaks
+namespace SaberTailor
 {
     public static class Preferences
     {

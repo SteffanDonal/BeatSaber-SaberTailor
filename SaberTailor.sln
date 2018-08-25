@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaberTweaks", "SaberTweaks.csproj", "{A2D66447-9928-4292-9A82-87ABBAA401FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaberTailor", "SaberTailor.csproj", "{A2D66447-9928-4292-9A82-87ABBAA401FF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98DCC76F-7293-4244-8FEE-3183D3050C2B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FAB4FD8-72D3-41B6-99DB-51CED5D07451}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
 	EndProjectSection

@@ -1,4 +1,4 @@
-﻿namespace SaberTweaks.Tweaks
+﻿namespace SaberTailor.Tweaks
 {
     public interface ITweak
     {

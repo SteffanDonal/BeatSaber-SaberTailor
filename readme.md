@@ -1,13 +1,13 @@
-# Beat Saber - Saber Tweaks
+# Beat Saber - Saber Tailor
 
 Tweak almost everything about your sabers, including length, grip, and trail length!
 
-Edit your tweaks in `\Beat Saber\UserData\modprefs.ini` - they're reloaded every time you start or restart a song, so use that for adjusting the grip values!
+Edit your settings in `\Beat Saber\UserData\modprefs.ini` - they're reloaded every time you start or restart a song, so use that for adjusting the grip values!
 
 The default values are below:
 
 ```ini
-[SaberTweaks]
+[SaberTailor]
 Length=1
 TrailLength=20
 GripLeftPosition=0,0,0

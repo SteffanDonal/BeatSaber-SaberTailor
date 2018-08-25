@@ -6,12 +6,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SaberTweaks
+namespace SaberTailor
 {
     [UsedImplicitly]
     public class Plugin : IPlugin
     {
-        public const string Name = "SaberTweaks";
+        public const string Name = "SaberTailor";
         public const string Version = "0.0.1";
 
         string IPlugin.Name => Name;

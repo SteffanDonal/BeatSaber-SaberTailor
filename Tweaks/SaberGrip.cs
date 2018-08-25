@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SaberTweaks.Tweaks
+namespace SaberTailor.Tweaks
 {
     public class SaberGrip : ITweak
     {
