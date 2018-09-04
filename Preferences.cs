@@ -9,6 +9,7 @@ namespace SaberTailor
     {
         public static float Length { get; private set; }
 
+        public static bool IsTrailEnabled { get; private set; }
         public static int TrailLength { get; private set; }
 
         public static Vector3 GripLeftPosition { get; private set; }
@@ -26,6 +27,8 @@ namespace SaberTailor
         {
             Length = ModPrefs.GetFloat(Plugin.Name, nameof(Length), 1f, true);
             Length = Math.Max(0.01f, Math.Min(2f, Length));
+
+            IsTrailEnabled = ModPrefs.GetBool(Plugin.Name, nameof(IsTrailEnabled), true, true);
 
             TrailLength = ModPrefs.GetInt(Plugin.Name, nameof(TrailLength), 20, true);
             TrailLength = Math.Max(5, Math.Min(100, TrailLength));

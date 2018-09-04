@@ -59,8 +59,15 @@ namespace SaberTailor.Tweaks
         {
             var length = Preferences.TrailLength;
 
-            ReflectionUtil.SetPrivateField(trail, "_maxFrame", length);
-            ReflectionUtil.SetPrivateField(trail, "_granularity", length * 3);
+            if (Preferences.IsTrailEnabled)
+            {
+                ReflectionUtil.SetPrivateField(trail, "_maxFrame", length);
+                ReflectionUtil.SetPrivateField(trail, "_granularity", length * 3);
+            }
+            else
+            {
+                trail.enabled = false;
+            }
         }
     }
 }

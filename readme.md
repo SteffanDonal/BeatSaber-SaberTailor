@@ -1,4 +1,4 @@
-# Beat Saber - Saber Tailor v1.0.0
+# Beat Saber - Saber Tailor v1.1.0
 
 Tweak almost everything about your sabers, including length, grip, and trail length!
 
@@ -9,6 +9,7 @@ The default values are below:
 ```ini
 [SaberTailor]
 Length=1
+IsTrailEnabled=1
 TrailLength=20
 GripLeftPosition=0,0,0
 GripLeftRotation=0,0,0
@@ -33,6 +34,14 @@ All config is reloaded every time a song starts - so you can easily adjust thing
 **Setting this to anything other than 1 will disable score submissions!**
 
 This setting is known to break many custom sabers, so use this at your own risk. A fix for this may be coming in the future!
+
+### Trail Toggle
+
+- **Setting**: `IsTrailEnabled`
+- **Values**: `1` | `0`
+- **Default**: `1`
+
+Allows you to disable the saber trail entirely, when set to `0`. This option *does not* disable score submission.
 
 ### Trail Length
 
