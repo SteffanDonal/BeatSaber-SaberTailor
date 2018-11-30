@@ -43,8 +43,8 @@ namespace SaberTailor.Tweaks
 
             try
             {
-                ModifySaber(handControllers.Find("LeftHandController")?.Find("Saber")?.GetComponent<Saber>());
-                ModifySaber(handControllers.Find("RightHandController")?.Find("Saber")?.GetComponent<Saber>());
+                ModifySaber(handControllers.Find("LeftSaber")?.Find("Saber")?.GetComponent<Saber>());
+                ModifySaber(handControllers.Find("RightSaber")?.Find("Saber")?.GetComponent<Saber>());
             }
             catch (NullReferenceException)
             {
@@ -56,19 +56,19 @@ namespace SaberTailor.Tweaks
         }
         void ModifySaber(Saber saber)
         {
-            var length = Preferences.Length;
-            var saberBlade = saber.transform.Find("Blade");
-            var saberTop = saber.saberBladeTopPosTransform;
-            var saberBottom = saber.saberBladeBottomPosTransform;
+            //var length = Preferences.Length;
+            //var saberBlade = saber.transform.Find("Blade");
+            //var saberTop = saber.saberBladeTopPosTransform;
+            //var saberBottom = saber.saberBladeBottomPosTransform;
 
-            var originalLength = saberBlade.localScale.y;
-            var originZ = saberBlade.localPosition.z - originalLength / 2f;
+            //var originalLength = saberBlade.localScale.y;
+            //var originZ = saberBlade.localPosition.z - originalLength / 2f;
 
-            saberBlade.localScale = new Vector3(saberBlade.localScale.x, length, saberBlade.localScale.z);
-            saberBlade.localPosition = new Vector3(saberBlade.localPosition.x, saberBlade.localPosition.y, originZ + length / 2f);
+            //saberBlade.localScale = new Vector3(saberBlade.localScale.x, length, saberBlade.localScale.z);
+            //saberBlade.localPosition = new Vector3(saberBlade.localPosition.x, saberBlade.localPosition.y, originZ + length / 2f);
 
-            saberTop.localPosition = new Vector3(saberTop.localPosition.x, saberTop.localPosition.y, (saberTop.localPosition.z - originZ) / originalLength * length);
-            saberBottom.localPosition = new Vector3(saberBottom.localPosition.x, saberBottom.localPosition.y, (saberBottom.localPosition.z - originZ) / originalLength * length);
+            //saberTop.localPosition = new Vector3(saberTop.localPosition.x, saberTop.localPosition.y, (saberTop.localPosition.z - originZ) / originalLength * length);
+            //saberBottom.localPosition = new Vector3(saberBottom.localPosition.x, saberBottom.localPosition.y, (saberBottom.localPosition.z - originZ) / originalLength * length);
         }
     }
 }

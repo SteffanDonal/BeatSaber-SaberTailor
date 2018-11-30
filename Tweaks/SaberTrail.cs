@@ -44,8 +44,8 @@ namespace SaberTailor.Tweaks
 
             try
             {
-                ModifyTrail(handControllers.Find("LeftHandController")?.Find("Saber")?.GetComponent<XWeaponTrail>());
-                ModifyTrail(handControllers.Find("RightHandController")?.Find("Saber")?.GetComponent<XWeaponTrail>());
+                ModifyTrail(handControllers.Find("LeftSaber")?.Find("Saber")?.GetComponent<XWeaponTrail>());
+                ModifyTrail(handControllers.Find("RightSaber")?.Find("Saber")?.GetComponent<XWeaponTrail>());
             }
             catch (NullReferenceException)
             {

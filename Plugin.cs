@@ -12,7 +12,7 @@ namespace SaberTailor
     public class Plugin : IPlugin
     {
         public const string Name = "SaberTailor";
-        public const string Version = "1.1.0";
+        public const string Version = "2.0.0";
 
         string IPlugin.Name => Name;
         string IPlugin.Version => Version;
@@ -67,13 +67,13 @@ namespace SaberTailor
             EnsureMainGameSceneSetup();
         }
 
-        MainGameSceneSetupData _mainGameSceneSetupData;
+        StandardLevelSceneSetupDataSO _mainGameSceneSetupData;
         bool _justPreventedSubmission;
         void EnsureMainGameSceneSetup()
         {
             if (_mainGameSceneSetupData == null)
             {
-                _mainGameSceneSetupData = Resources.FindObjectsOfTypeAll<MainGameSceneSetupData>().FirstOrDefault();
+                _mainGameSceneSetupData = Resources.FindObjectsOfTypeAll<StandardLevelSceneSetupDataSO>().FirstOrDefault();
 
                 if (_mainGameSceneSetupData == null) return;
                 _mainGameSceneSetupData.didFinishEvent += OnMainGameSceneDidFinish;
@@ -86,17 +86,18 @@ namespace SaberTailor
 
                 resultsViewController.continueButtonPressedEvent += controller =>
                 {
-                    PersistentSingleton<GameDataModel>.instance
-                        .gameDynamicData.GetCurrentPlayerDynamicData()
-                        .gameplayOptions.noEnergy = false;
+                    //PersistentSingleton<GameDataModel>.instance
+                    //    .gameDynamicData.GetCurrentPlayerDynamicData()
+                    //    .gameplayOptions.noEnergy = false;
 
                     _justPreventedSubmission = false;
                 };
             }
         }
-        void OnMainGameSceneDidFinish(MainGameSceneSetupData setupData, LevelCompletionResults levelCompletionResults)
+        void OnMainGameSceneDidFinish(StandardLevelSceneSetupDataSO setupData, LevelCompletionResults levelCompletionResults)
         {
-            if (!setupData.gameplayOptions.validForScoreUse) return; // NoFail active
+            
+            //if (!setupData.gameplayOptions.validForScoreUse) return; // NoFail active
             if (levelCompletionResults?.levelEndStateType != LevelCompletionResults.LevelEndStateType.Cleared) return;
 
             var submissionBlockers = _tweaks.Where(tweak => tweak.IsPreventingScoreSubmission).ToList();
@@ -104,7 +105,7 @@ namespace SaberTailor
 
             submissionBlockers.ForEach(tweak => Log("Score submission prevented by tweak: {0}", tweak.Name));
 
-            setupData.gameplayOptions.noEnergy = true;
+            //setupData.gameplayOptions.noEnergy = true;
             _justPreventedSubmission = true;
         }
 

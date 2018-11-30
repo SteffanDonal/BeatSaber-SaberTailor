@@ -43,8 +43,10 @@ namespace SaberTailor.Tweaks
 
             try
             {
-                ModifySaber(handControllers.Find("LeftHandController")?.Find("Saber"), Preferences.GripLeftPosition, Preferences.GripLeftRotation);
-                ModifySaber(handControllers.Find("RightHandController")?.Find("Saber"), Preferences.GripRightPosition, Preferences.GripRightRotation);
+                // handControllers has two children: "LeftSaber", "RightSaber"
+                // each Saber has five children: "Top", "Bottom", "TrailTop", "TrailBottom", "Saber"
+                ModifySaber(handControllers.Find("LeftSaber")?.Find("Saber"), Preferences.GripLeftPosition, Preferences.GripLeftRotation);
+                ModifySaber(handControllers.Find("RightSaber")?.Find("Saber"), Preferences.GripRightPosition, Preferences.GripRightRotation);
             }
             catch (NullReferenceException)
             {
