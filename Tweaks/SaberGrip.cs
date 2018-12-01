@@ -43,8 +43,6 @@ namespace SaberTailor.Tweaks
 
             try
             {
-                // handControllers has two children: "LeftSaber", "RightSaber"
-                // each Saber has five children: "Top", "Bottom", "TrailTop", "TrailBottom", "Saber"
                 ModifySaber(handControllers.Find("LeftSaber")?.Find("Saber"), Preferences.GripLeftPosition, Preferences.GripLeftRotation);
                 ModifySaber(handControllers.Find("RightSaber")?.Find("Saber"), Preferences.GripRightPosition, Preferences.GripRightRotation);
             }

@@ -86,6 +86,7 @@ namespace SaberTailor
 
                 resultsViewController.continueButtonPressedEvent += controller =>
                 {
+                    //FIXME: Game structure changes, noEnergy doesn't exist anymore in this form/function
                     //PersistentSingleton<GameDataModel>.instance
                     //    .gameDynamicData.GetCurrentPlayerDynamicData()
                     //    .gameplayOptions.noEnergy = false;
@@ -97,7 +98,8 @@ namespace SaberTailor
         void OnMainGameSceneDidFinish(StandardLevelSceneSetupDataSO setupData, LevelCompletionResults levelCompletionResults)
         {
             
-            //if (!setupData.gameplayOptions.validForScoreUse) return; // NoFail active
+            //if (!setupData.gameplayOptions.validForScoreUse) return; // NoFail active  // NoFail is now a valid modifier resulting in a pass with a 0.5x score modifier
+            // Here be practice mode detection, though
             if (levelCompletionResults?.levelEndStateType != LevelCompletionResults.LevelEndStateType.Cleared) return;
 
             var submissionBlockers = _tweaks.Where(tweak => tweak.IsPreventingScoreSubmission).ToList();
@@ -105,6 +107,7 @@ namespace SaberTailor
 
             submissionBlockers.ForEach(tweak => Log("Score submission prevented by tweak: {0}", tweak.Name));
 
+            //FIXME: Game structure changes, noEnergy doesn't exist anymore in this form/function
             //setupData.gameplayOptions.noEnergy = true;
             _justPreventedSubmission = true;
         }
