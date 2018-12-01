@@ -52,7 +52,8 @@ namespace SaberTailor.Tweaks
                 return;
             }
 
-            this.Log("Successfully modified sabers!");
+            this.Log("Saber modifications not yet implemented!");
+            //this.Log("Successfully modified sabers!");
         }
         void ModifySaber(Saber saber)
         {
