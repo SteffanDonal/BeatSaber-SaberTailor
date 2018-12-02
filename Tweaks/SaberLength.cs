@@ -9,6 +9,8 @@ namespace SaberTailor.Tweaks
     {
         public string Name => "SaberLength";
         public bool IsPreventingScoreSubmission => Math.Abs(Preferences.Length - 1.0f) > 0.01f;
+        private SoloFreePlayFlowCoordinator _soloFreePlayFlowCoordinator;
+        private PracticeViewController _practiceViewController;
 
         public void Load()
         {
@@ -22,6 +24,23 @@ namespace SaberTailor.Tweaks
         void SceneManagerOnSceneLoaded(Scene loadedScene, LoadSceneMode loadSceneMode)
         {
             if (loadedScene.name != "GameCore") return;
+
+            if (IsPreventingScoreSubmission)
+            {
+                // Check if practice mode is active
+                _soloFreePlayFlowCoordinator = Resources.FindObjectsOfTypeAll<SoloFreePlayFlowCoordinator>().FirstOrDefault();
+                if (_soloFreePlayFlowCoordinator == null)
+                {
+                    this.Log("Couldn't find SoloFreePlayFlowCoordinator, bailing!");
+                    return;
+                }
+                _practiceViewController = ReflectionUtil.GetPrivateField<PracticeViewController>(_soloFreePlayFlowCoordinator, "_practiceViewController");
+                if (!_practiceViewController.isInViewControllerHierarchy)
+                {
+                    this.Log("Practice mode is not active. Not modifying sabers.");
+                    return;
+                }
+            }
 
             this.Log("Tweaking GameCore...");
             Preferences.Load();
