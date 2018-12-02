@@ -35,6 +35,11 @@ namespace SaberTailor.Tweaks
                     return;
                 }
                 _practiceViewController = ReflectionUtil.GetPrivateField<PracticeViewController>(_soloFreePlayFlowCoordinator, "_practiceViewController");
+                if (_practiceViewController == null)
+                {
+                    this.Log("Couldn't find PracticeViewController, bailing!");
+                    return;
+                }
                 if (!_practiceViewController.isInViewControllerHierarchy)
                 {
                     this.Log("Practice mode is not active. Not modifying sabers.");
@@ -62,8 +67,8 @@ namespace SaberTailor.Tweaks
 
             try
             {
-                ModifySaber(handControllers.Find("LeftSaber")?.Find("Saber")?.GetComponent<Saber>());
-                ModifySaber(handControllers.Find("RightSaber")?.Find("Saber")?.GetComponent<Saber>());
+                ModifySaber(handControllers.Find("RightSaber")?.GetComponent<Saber>());
+                ModifySaber(handControllers.Find("LeftSaber")?.GetComponent<Saber>());
             }
             catch (NullReferenceException)
             {
@@ -71,23 +76,30 @@ namespace SaberTailor.Tweaks
                 return;
             }
 
-            this.Log("Saber modifications not yet implemented!");
-            //this.Log("Successfully modified sabers!");
+            this.Log("Successfully modified sabers!");
         }
         void ModifySaber(Saber saber)
         {
-            //var length = Preferences.Length;
-            //var saberBlade = saber.transform.Find("Blade");
-            //var saberTop = saber.saberBladeTopPosTransform;
-            //var saberBottom = saber.saberBladeBottomPosTransform;
+            var length = Preferences.Length;
+            var saberBlade = saber.transform.Find("Saber");
+            var saberTop = ReflectionUtil.GetPrivateField<Transform>(saber, "_topPos");
+            var saberBottom = ReflectionUtil.GetPrivateField<Transform>(saber, "_bottomPos");
 
-            //var originalLength = saberBlade.localScale.y;
-            //var originZ = saberBlade.localPosition.z - originalLength / 2f;
+            // In v0.12.0, blade and handle are not different Unity objects anymore
+            var originalLength = saberBlade.localScale.z;
+            var originZ = (originalLength - saberBlade.localPosition.z) / 2f;
 
-            //saberBlade.localScale = new Vector3(saberBlade.localScale.x, length, saberBlade.localScale.z);
+            //this.Log("Z-Axis values: originalLength=" + originalLength + " | originalZ=" + saberBlade.localPosition.z + " | originZ=" + originZ);
+            this.Log("TopLocalPos=" + saberTop.localPosition.z + " | BottomsLocalPos=" + saberBottom.localPosition.z);
+            //this.Log("Z-Axis new positions: localPosition=" + (originZ + length / 2f) + " | TopLocalPos=" + ((saberTop.localPosition.z - originZ) / originalLength * length) + " | BottomLocalPos=" + ((saberBottom.localPosition.z - originZ) / originalLength * length));
+
+            //this.Log("Setting Blade Scale");
+            saberBlade.localScale = new Vector3(saberBlade.localScale.x, saberBlade.localScale.y, saberBlade.localScale.z * length);
+            //this.Log("Setting Blade Position");
             //saberBlade.localPosition = new Vector3(saberBlade.localPosition.x, saberBlade.localPosition.y, originZ + length / 2f);
 
-            //saberTop.localPosition = new Vector3(saberTop.localPosition.x, saberTop.localPosition.y, (saberTop.localPosition.z - originZ) / originalLength * length);
+            saberTop.localPosition = new Vector3(saberTop.localPosition.x, saberTop.localPosition.y, originalLength * length);
+            this.Log("TopLocalPos=" + saberTop.localPosition.z + " | BottomsLocalPos=" + saberBottom.localPosition.z);
             //saberBottom.localPosition = new Vector3(saberBottom.localPosition.x, saberBottom.localPosition.y, (saberBottom.localPosition.z - originZ) / originalLength * length);
         }
     }
